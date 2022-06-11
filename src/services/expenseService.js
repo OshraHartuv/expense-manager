@@ -10,9 +10,9 @@ const STORAGE_KEY = 'expenses'
 
 const gDefaultExpenses = [
     {_id: 'i1', title:'Food', amount: 150 , currency: 'ILS', createdAt: 1654759120000, spentAt: 1654759120000},
-    {_id: 'i1', title:'Fuel', amount: 320 , currency: 'ILS', createdAt: 1654671760000, spentAt: 1654671760000},
-    {_id: 'i1', title:'Drinks', amount: 80 , currency: 'ILS', createdAt: 1654462720000, spentAt: 1654462720000},
-    {_id: 'i1', title:'Shopping', amount: 109 , currency: 'ILS', createdAt: 1654357260000, spentAt: 1654354920000}
+    {_id: 'i2', title:'Fuel', amount: 320 , currency: 'ILS', createdAt: 1654671760000, spentAt: 1654671760000},
+    {_id: 'i3', title:'Drinks', amount: 80 , currency: 'ILS', createdAt: 1654462720000, spentAt: 1654462720000},
+    {_id: 'i4', title:'Shopping', amount: 109 , currency: 'ILS', createdAt: 1654357260000, spentAt: 1654354920000}
 ]
 
 var gExpenses = _loadExpenses()

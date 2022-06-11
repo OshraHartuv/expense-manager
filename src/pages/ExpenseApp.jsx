@@ -20,7 +20,7 @@ export const ExpenseApp = (props) => {
 
     return (
         <section className="expenses-app main-layout">
-            <ExpenseList expenses={expenses} />
+            <ExpenseList expenses={expenses} onRemoveExpense={onRemoveExpense}/>
         </section>
     );
 };
