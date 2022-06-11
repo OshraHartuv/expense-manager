@@ -1,0 +1,15 @@
+.expense-preview{
+    background-color: $clr2;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    border-radius: 3px;
+ 
+    .header{
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+     
+    }
+}
