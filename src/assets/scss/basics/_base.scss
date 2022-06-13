@@ -7,9 +7,17 @@
     box-sizing: border-box;
 }
 
+html,
+body,
+#root,
+.app {
+    height: 100%;
+}
+
+
 html { 
 //    font-family: DM Sans; 
-   color: $clr3;
+   color: $clr4;
 //    line-height: 1.8;
 //    line-height: lh(26px);
    font-size: 18px;
@@ -20,7 +28,8 @@ html {
 
 body {
     margin: 0;
-    background-color: $clr5;
+    background-color: $clr1;
+    min-height: 100vh;
 
     // @include for-normal-layout {
     //     &.sidebar-open {
@@ -105,15 +114,22 @@ p {
 
 // links
 a {
-    color: $clr1;
-
+    color: $clr3;
+    text-decoration: none;
     &.active {
-        background-color: $clr1;
-        color: $clr2;
+        // background-color: $clr1;
+        color: $clr4;
     }
 }
 
-mark {
-    color: $clr1;
-    background-color: transparent;
+// mark {
+//     color: $clr1;
+//     background-color: transparent;
+// }
+
+
+.app{
+    display: flex;
+    height: 100%;
+    // min-height: 100vh;
 }

@@ -42,7 +42,7 @@ export const ExpenseEdit = (props) => {
 
     if (!expense) return <div>Loading...</div>;
     return (
-        <section className="expense-edit main-layout">
+        <section className="expense-edit">
             <h1>{expense._id ? 'Edit' : 'Add'} Expense</h1>
             <form onSubmit={onSaveExpense}>
                 <label htmlFor="title">Title</label>

@@ -20,7 +20,7 @@ export const ExpenseApp = (props) => {
     if (!expenses) return <div>Loading...</div>;
 
     return (
-        <section className="expenses-app main-layout">
+        <section className="expenses-app">
              <Link to='/expense/edit'>Add Expense</Link>
             <ExpenseList expenses={expenses} onRemoveExpense={onRemoveExpense}/>
         </section>

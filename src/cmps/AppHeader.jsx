@@ -1,9 +1,12 @@
 export function AppHeader(){
     return (
-        <header className="app-header main-layout">
+        <header className="app-header">
             <section className="container flex">
-            <div>This is a header</div>
-            <button>Login</button>
+            <div>Logo</div>
+            <div class="links flex">
+            <a>Overview</a>
+            <a>Finance</a>
+            </div>
             </section>
         </header>
     )

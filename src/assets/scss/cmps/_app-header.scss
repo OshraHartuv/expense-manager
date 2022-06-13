@@ -1,9 +1,14 @@
 .app-header{
     margin-bottom: 15px;
-    padding: 5px 0;
-    background-color: $clr4;
-
+    padding: 10px 0;
+    background-color: $clr1;
+    color: $clr3;
     .container{
         justify-content: space-between;
+        
+        .links{
+            justify-content: space-between;
+            gap: 15px;
+        }
     }
 }

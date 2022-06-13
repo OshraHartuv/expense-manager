@@ -4,13 +4,14 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { AppHeader } from './cmps/AppHeader';
 import { ExpenseApp } from './pages/ExpenseApp';
 import { ExpenseEdit } from './pages/ExpenseEdit';
+import { SideMenu } from './cmps/SideMenu';
 
 function App() {
     return (
         <Router>
-            <div className="app">
+            <div className="app ">
+                <main className="main-layout">
                 <AppHeader />
-                <main className="container">
                     <Routes>
                         <Route path="/">
                             <Route
@@ -25,6 +26,7 @@ function App() {
                         </Route>
                     </Routes>
                 </main>
+                    <SideMenu/>
             </div>
         </Router>
     );
