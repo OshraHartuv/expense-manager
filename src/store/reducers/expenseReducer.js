@@ -12,11 +12,11 @@ export function expenseReducer(state = INITIAL_STATE, action) {
                 expenses: action.expenses
             }
 
-        // case 'ADD_EXPENSE':
-        //     return {
-        //         ...state,
-        //         expenses: [...state.expenses, action.expense]
-        //     }
+        case 'ADD_EXPENSE':
+            return {
+                ...state,
+                expenses: [...state.expenses, action.expense]
+            }
 
         case 'REMOVE_EXPENSE':
             return {
@@ -24,11 +24,12 @@ export function expenseReducer(state = INITIAL_STATE, action) {
                 expenses: state.expenses.filter(expense => expense._id !== action.expenseId)
             }
 
-        // case 'UPDATE_EXPENSE':
-        //     return {
-        //         ...state,
-        //         expenses: state.expenses.map(expense => expense._id === action.expense._id ? action.expense : expense)
-        //     }
+        case 'UPDATE_EXPENSE':
+            return {
+                ...state,
+                expenses: state.expenses.map(expense => expense._id === action.expense._id ? action.expense : expense)
+            }
+            
         // case 'SET_FILTER_BY':
         //     return {
         //         ...state,

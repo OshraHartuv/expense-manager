@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from '../hooks/useForm';
 import { expenseService } from '../services/expenseService';
+import { saveExpense } from "../store/actions/expenseActions";
 
 export const ExpenseEdit = (props) => {
     const [expense, handleChange, setExpense] = useForm(null);
@@ -11,6 +13,8 @@ export const ExpenseEdit = (props) => {
     useEffect(() => {
         loadExpense();
     }, []);
+
+    const dispatch = useDispatch();
 
     const loadExpense = async () => {
         const expense = id
@@ -23,10 +27,14 @@ export const ExpenseEdit = (props) => {
     const onSaveExpense = async (ev) => {
         ev.preventDefault();
         // TODO : Change to store
-        await expenseService.save({ ...expense });
+        await dispatch(saveExpense({ ...expense }));
         navigate('/')
        
     };
+
+    // const onRemoveExpense = async (expenseId) => {
+    //     dispatch(removeExpense(expenseId))
+    // }
 
     const inputRef = (elInput) => {
         if (elInput) elInput.focus();
@@ -34,7 +42,7 @@ export const ExpenseEdit = (props) => {
 
     if (!expense) return <div>Loading...</div>;
     return (
-        <section className="expense-edit">
+        <section className="expense-edit main-layout">
             <h1>{expense._id ? 'Edit' : 'Add'} Expense</h1>
             <form onSubmit={onSaveExpense}>
                 <label htmlFor="title">Title</label>

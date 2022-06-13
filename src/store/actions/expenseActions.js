@@ -24,3 +24,17 @@ export function removeExpense(expenseId){
         }
     }
 }
+
+export function saveExpense(expenseToSave){
+    const type = expenseToSave._id ? 'UPDATE_EXPENSE' : 'ADD_EXPENSE'
+    console.log('type >>',type);
+    return async (dispatch) =>{
+        try{
+            const savedExpense = await expenseService.save(expenseToSave)
+            console.log('savedExpense >>',savedExpense);
+            dispatch({type , expense: savedExpense})
+        }catch(err){
+            console.log('err in saveExpenses >>',err);
+        }
+    }
+}
