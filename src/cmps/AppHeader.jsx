@@ -3,7 +3,7 @@ export function AppHeader(){
         <header className="app-header">
             <section className="container flex">
             <div>Logo</div>
-            <div class="links flex">
+            <div className="links flex">
             <a>Overview</a>
             <a>Finance</a>
             </div>

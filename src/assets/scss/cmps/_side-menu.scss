@@ -1,19 +1,86 @@
 .side-menu {
-    // min-height: 100vh;
     background-color: $clr5;
     width: 300px;
     height: 100%;
-    // grid-column: 3 / span 2;
-    // grid-row: 1 / -1;
 
-    .container{
+    .container {
         flex-direction: column;
 
-        .user{
+        .user {
             margin-bottom: 15px;
             padding: 10px 0;
             min-height: 60px;
-          
+            text-align: right;
         }
+        .side-section {
+            padding: 0 0 2rem;
+            border-bottom: 0.5px solid $clr3;
+
+            header {
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 0 1rem;
+                line-height: 1;
+
+                .add-btn {
+                    border-radius: 3px;
+                    border: 1px dashed $clr3;
+                    color: $clr3;
+                    background-color: $clr5;
+                }
+            }
+
+            main {
+                .list-item {
+                    margin: 0 0 1rem;
+                    gap: 8px;
+                    border-radius: 3px;
+
+                    .fa {
+                        border-radius: 5px;
+                        align-items: center;
+                        font-size: 15px;
+                        color: $clr5;
+                        padding: 0 0.5rem;
+
+                        &.fa-chart-line{
+                            background-color: #ff9066;
+
+                        }
+
+                        &.fa-house{
+                            background-color: #8568fb;
+                        }
+                    }
+                    
+                    .info {
+                        gap: 2px;
+                        flex-direction: column;
+                        margin: 0;
+                        .amount {
+                            color: $clr3;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+
+            &:last-child {
+                margin-top: 2em;
+                border-bottom: none;
+            }
+        }
+    }
+
+    @include for-narrow-layout {
+        @include layoutGTC($break-narrow);
+    }
+
+    @include for-normal-layout {
+        @include layoutGTC($break-normal);
+    }
+
+    @include for-wide-layout {
+        @include layoutGTC($break-wide);
     }
 }
