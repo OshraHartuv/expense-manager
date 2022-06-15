@@ -1,4 +1,4 @@
-// Flex 
+// Flex
 .flex {
     display: flex;
 }
@@ -6,23 +6,22 @@
     display: inline-flex;
 }
 
-// List 
+// List
 .clean-list {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-.prime-header{
+.prime-header {
     font-weight: 600;
     font-size: 18px;
 }
 
-
-// // Text 
+// // Text
 // .vertical-text {
 //     writing-mode: tb-rl;
-//     transform: rotate(-180deg);  
+//     transform: rotate(-180deg);
 // }
 
 // .tag-text {
@@ -40,3 +39,46 @@
 // .ratio-card { @include aspect-ratio(100, 80); }
 
 // .ratio-poster { @include aspect-ratio(100, 150); }
+
+.icon {
+    &-sm,
+    &-md,
+    &-lg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // background-color: aqua;
+        border-radius: 3px;
+        margin-right: 6px;
+    }
+    &-sm {
+        // color: #42526e;
+        font-weight: 400;
+        font-size: 16px;
+        height: 20px;
+        line-height: 20px;
+        width: 20px;
+        // -webkit-font-smoothing: antialiased;
+        // font-style: normal;
+        // text-align: center;
+        vertical-align: -2px;
+    }
+    &-md {
+        height: 26px;
+        line-height: 26px;
+        // background-color: aqua;
+        // color: #42526e;
+        font-size: 20px;
+        // margin-right: 6px;
+        width: 26px;
+    }
+    &-lg {
+        // background-color: aqua;
+        // color: #42526e;
+        font-size: 24px;
+        height: 32px;
+        line-height: 32px;
+        width: 32px;
+        // margin-right: 6px;
+    }
+}

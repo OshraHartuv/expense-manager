@@ -10,14 +10,21 @@ export function SideMenu() {
                     </header>
                     <main>
                         <div className="list-item flex">
-                            <i className="fa fa-solid fa-house flex"></i>
+                            <div className="icon-md house">
+
+                            <i className="fa fa-solid fa-house"></i>
+                            </div>
+                            {/* <i className="fa fa-solid fa-house flex"></i> */}
                             <div className="flex info">
                                 <div className="name">Home</div>
                                 <div className="amount">$150,000</div>
                             </div>
                         </div>
                         <div className="list-item flex">
-                            <i className="fa fa-chart-line flex"></i>
+                            <div className="icon-md chart">
+
+                            <i className="fa fa fa-chart-line flex"></i>
+                            </div>
                             <div className="flex info">
                                 <div className="name">Investments</div>
                                 <div className="amount">$875,000</div>

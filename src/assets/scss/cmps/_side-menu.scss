@@ -35,22 +35,41 @@
                     margin: 0 0 1rem;
                     gap: 8px;
                     border-radius: 3px;
+                    align-items: center;
 
-                    .fa {
-                        border-radius: 5px;
-                        align-items: center;
-                        font-size: 15px;
+                    // .fa {
+                    //     border-radius: 5px;
+                    //     align-items: center;
+                    //     font-size: 15px;
+                    //     color: $clr5;
+                    //     padding: 0 0.5rem;
+                    // &.fa-chart-line{
+                    //     background-color: #ff9066;
+
+                    // }
+
+                    // &.fa-house{
+                    //     background-color: #8568fb;
+                    // }
+                    // }
+                    
+                    .icon-md{
                         color: $clr5;
-                        padding: 0 0.5rem;
-
-                        &.fa-chart-line{
+                        padding: 15px;
+                        &.chart{
                             background-color: #ff9066;
-
+                            
                         }
-
-                        &.fa-house{
+                        
+                        &.house{
                             background-color: #8568fb;
                         }
+                        
+                        // .fa{
+                        //     padding: 3px;
+
+                        // }
+
                     }
                     
                     .info {
