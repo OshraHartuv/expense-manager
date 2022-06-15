@@ -2,16 +2,21 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TransactionList } from '../cmps/TransactionList';
 import { Link } from 'react-router-dom';
-import { loadTransactions, removeTransaction } from '../store/actions/transactionActions';
+import { loadTransactions, removeTransaction, loadTransactionsMapByMonths } from '../store/actions/transactionActions';
 import walletImg from '../assets/imgs/wallet.png'
+import { transactionService } from '../services/transactionService';
 // import { loadRobots, removeRobot, setFilterBy } from '../store/actions/robotActions'
 
 export const TransactionApp = (props) => {
     useEffect(() => {
         dispatch(loadTransactions());
+        dispatch(loadTransactionsMapByMonths());
     }, []);
 
     const { transactions } = useSelector((state) => state.transactionModule);
+
+    const { transactionsMap } = useSelector((state) => state.transactionModule);
+
     const dispatch = useDispatch();
 
     const onRemoveTransaction = async (transactionId) => {

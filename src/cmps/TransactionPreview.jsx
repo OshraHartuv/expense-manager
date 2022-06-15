@@ -7,7 +7,7 @@ export function TransactionPreview({ transaction , onRemoveTransaction}) {
                 <div>{transaction.title}</div> 
                 <div>{transaction.amount}</div>
             </header>
-            <div>{transaction.spentAt}</div>
+            <div>{transaction.transactionTime}</div>
             <button onClick={()=>onRemoveTransaction(transaction._id)}>Delete</button>
             <Link to={`/transaction/edit/${transaction._id}`}>Edit Transaction</Link>
         </section>

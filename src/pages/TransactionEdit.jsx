@@ -3,12 +3,12 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from '../hooks/useForm';
 import { transactionService } from '../services/transactionService';
-import { saveTransaction } from "../store/actions/transactionActions";
+import { saveTransaction } from '../store/actions/transactionActions';
 
 export const TransactionEdit = (props) => {
     const [transaction, handleChange, setTransaction] = useForm(null);
     const { id } = useParams();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadTransaction();
@@ -26,10 +26,8 @@ export const TransactionEdit = (props) => {
 
     const onSaveTransaction = async (ev) => {
         ev.preventDefault();
-        // TODO : Change to store
         await dispatch(saveTransaction({ ...transaction }));
-        navigate('/')
-       
+        navigate('/');
     };
 
     // const onRemoveTransaction = async (transactionId) => {
@@ -47,7 +45,6 @@ export const TransactionEdit = (props) => {
             <form onSubmit={onSaveTransaction}>
                 <label htmlFor="title">Title</label>
                 <input
-                   
                     onChange={handleChange}
                     value={transaction.title}
                     type="text"
@@ -65,7 +62,9 @@ export const TransactionEdit = (props) => {
                 <label htmlFor="date">Date</label>
                 <input
                     onChange={handleChange}
-                    value={new Date(transaction.spentAt).toISOString().slice(0, 10)}
+                    value={new Date(transaction.transactionTime)
+                        .toISOString()
+                        .slice(0, 10)}
                     type="date"
                     name="date"
                     id="date"

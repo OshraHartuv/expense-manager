@@ -7,6 +7,7 @@ export const transactionService = {
     getEmptyTransaction,
     getById,
     save,
+    getTransactionMapByMonths
 };
 
 const STORAGE_KEY = 'transactions';
@@ -18,8 +19,8 @@ const gDefaultTransactions = [
         amount: 150,
         currency: 'ILS',
         createdAt: 1654759120000,
-        spentAt: 1654759120000,
-        transactionType: 'outcome'
+        transactionTime: 1654759120000,
+        transactionType: 'outcome',
     },
     {
         _id: 'i2',
@@ -27,8 +28,8 @@ const gDefaultTransactions = [
         amount: 320,
         currency: 'ILS',
         createdAt: 1654671760000,
-        spentAt: 1654671760000,
-        transactionType: 'income'
+        transactionTime: 1654671760000,
+        transactionType: 'income',
     },
     {
         _id: 'i3',
@@ -36,8 +37,8 @@ const gDefaultTransactions = [
         amount: 80,
         currency: 'ILS',
         createdAt: 1654462720000,
-        spentAt: 1654462720000,
-        transactionType: 'outcome'
+        transactionTime: 1654462720000,
+        transactionType: 'outcome',
     },
     {
         _id: 'i4',
@@ -45,8 +46,8 @@ const gDefaultTransactions = [
         amount: 109,
         currency: 'ILS',
         createdAt: 1654357260000,
-        spentAt: 1654354920000,
-        transactionType: 'income'
+        transactionTime: 1654354920000,
+        transactionType: 'income',
     },
 ];
 
@@ -66,7 +67,9 @@ function query(filterBy) {
 }
 
 function removeTransaction(transactionId) {
-    const idx = gTransactions.findIndex((transaction) => transactionId === transaction._id);
+    const idx = gTransactions.findIndex(
+        (transaction) => transactionId === transaction._id
+    );
     gTransactions.splice(idx, 1);
     if (!gTransactions.length) gTransactions = gDefaultTransactions.slice();
     storageService.store(STORAGE_KEY, gTransactions);
@@ -78,16 +81,19 @@ function getEmptyTransaction() {
         title: '',
         amount: 0,
         currency: 'ILS',
-        spentAt: Date.now(),
+        transactionTime: Date.now(),
     };
 }
 
 function getById(id) {
-    const transaction = gTransactions.find((transaction) => transaction._id === id);
+    const transaction = gTransactions.find(
+        (transaction) => transaction._id === id
+    );
     return Promise.resolve({ ...transaction });
 }
 
 function save(transactionToSave) {
+    transactionToSave.transactionTime = +transactionToSave.transactionTime
     if (transactionToSave._id) {
         const idx = gTransactions.findIndex(
             (transaction) => transaction._id === transactionToSave._id
@@ -102,9 +108,37 @@ function save(transactionToSave) {
     return Promise.resolve(transactionToSave);
 }
 
+function getTransactionMapByMonths(transactions) {
+    const monthNames = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+    ];
+    var transactionsMapByMonth = {};
+    transactions.forEach((transaction) => {
+        const date = new Date(transaction.transactionTime)
+        const month=  monthNames[date.getMonth()];
+        const year = date.getFullYear()
+        console.log('`${month} ${year}` ',`${month} ${year}`);
+        transactionsMapByMonth[`${month} ${year}`] ? transactionsMapByMonth[`${month} ${year}`].push(transaction) : transactionsMapByMonth[`${month} ${year}`] = [transaction]
+    });
+    console.log('transactionsMapByMonth ',transactionsMapByMonth);
+    return transactionsMapByMonth
+}
+
 function _loadTransactions() {
     let Transactions = storageService.load(STORAGE_KEY);
-    if (!Transactions || !Transactions.length) Transactions = gDefaultTransactions;
+    if (!Transactions || !Transactions.length)
+        Transactions = gDefaultTransactions;
     storageService.store(STORAGE_KEY, Transactions);
     return Transactions;
 }

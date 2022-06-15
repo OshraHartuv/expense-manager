@@ -12,6 +12,10 @@ body,
 #root,
 .app {
     height: 100%;
+}
+
+.app{
+    flex:1;
     min-width: 100vw;
 }
 

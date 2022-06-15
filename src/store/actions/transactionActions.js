@@ -27,14 +27,26 @@ export function removeTransaction(transactionId){
 
 export function saveTransaction(transactionToSave){
     const type = transactionToSave._id ? 'UPDATE_TRANSACTION' : 'ADD_TRANSACTION'
-    console.log('type >>',type);
     return async (dispatch) =>{
         try{
             const savedTransaction = await transactionService.save(transactionToSave)
-            console.log('savedTransaction >>',savedTransaction);
             dispatch({type , transaction: savedTransaction})
         }catch(err){
             console.log('err in saveTransactions >>',err);
+        }
+    }
+}
+
+export function loadTransactionsMapByMonths(){
+    // return transactionService.getTransactionMapByMonths()
+    return async (dispatch, getState) =>{
+        try{
+            const { transactions } = getState().transactionModule
+            const transactionsMap = transactionService.getTransactionMapByMonths(transactions)
+            dispatch({type : 'SET_TRANSACTIONS_MAP', transactionsMap})
+
+        }catch(err){
+            console.log('err in loadTransactions >>',err);
         }
     }
 }
