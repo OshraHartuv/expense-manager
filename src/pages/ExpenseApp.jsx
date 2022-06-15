@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ExpenseList } from '../cmps/ExpenseList';
 import { Link } from 'react-router-dom';
 import { loadExpenses, removeExpense } from '../store/actions/expenseActions';
+import walletImg from '../assets/imgs/wallet.png'
 // import { loadRobots, removeRobot, setFilterBy } from '../store/actions/robotActions'
 
 export const ExpenseApp = (props) => {
@@ -21,15 +22,13 @@ export const ExpenseApp = (props) => {
 
     return (
         <section className="expenses-app">
-            <div className='icon-sm'>
-                <i className="fa-solid fa-chart-line"></i>
-            </div>
-            <div className='icon-md'>
-                <i className="fa-solid fa-chart-line"></i>
-            </div>
-            <div className='icon-lg'>
-                <i className="fa-solid fa-chart-line"></i>
-            </div>
+            <header className='flex'>
+                <img src={walletImg} alt="" />
+                {/* <div className="icon-lg house">
+                    <i className="fa fa-solid fa-house"></i>
+                </div> */}
+                <div className="prime-header">Home Wallet</div>
+            </header>
             <Link to="/expense/edit">Add Expense</Link>
             <ExpenseList
                 expenses={expenses}

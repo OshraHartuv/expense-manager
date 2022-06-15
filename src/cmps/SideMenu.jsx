@@ -16,7 +16,7 @@ export function SideMenu() {
                             </div>
                             {/* <i className="fa fa-solid fa-house flex"></i> */}
                             <div className="flex info">
-                                <div className="name">Home</div>
+                                <div className="name">Home Wallet</div>
                                 <div className="amount">$150,000</div>
                             </div>
                         </div>
