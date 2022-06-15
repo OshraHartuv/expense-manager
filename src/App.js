@@ -2,8 +2,8 @@ import './assets/scss/global.scss';
 // import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { AppHeader } from './cmps/AppHeader';
-import { ExpenseApp } from './pages/ExpenseApp';
-import { ExpenseEdit } from './pages/ExpenseEdit';
+import { TransactionApp } from './pages/TransactionApp';
+import { TransactionEdit } from './pages/TransactionEdit';
 import { SideMenu } from './cmps/SideMenu';
 
 function App() {
@@ -15,14 +15,14 @@ function App() {
                     <Routes>
                         <Route path="/">
                             <Route
-                                path="expense/edit/:id"
-                                element={<ExpenseEdit />}
+                                path="transaction/edit/:id"
+                                element={<TransactionEdit />}
                             />
                             <Route
-                                path="expense/edit"
-                                element={<ExpenseEdit />}
+                                path="transaction/edit"
+                                element={<TransactionEdit />}
                             />
-                            <Route index element={<ExpenseApp />} />
+                            <Route index element={<TransactionApp />} />
                         </Route>
                     </Routes>
                 </main>

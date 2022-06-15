@@ -1,27 +1,27 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ExpenseList } from '../cmps/ExpenseList';
+import { TransactionList } from '../cmps/TransactionList';
 import { Link } from 'react-router-dom';
-import { loadExpenses, removeExpense } from '../store/actions/expenseActions';
+import { loadTransactions, removeTransaction } from '../store/actions/transactionActions';
 import walletImg from '../assets/imgs/wallet.png'
 // import { loadRobots, removeRobot, setFilterBy } from '../store/actions/robotActions'
 
-export const ExpenseApp = (props) => {
+export const TransactionApp = (props) => {
     useEffect(() => {
-        dispatch(loadExpenses());
+        dispatch(loadTransactions());
     }, []);
 
-    const { expenses } = useSelector((state) => state.expenseModule);
+    const { transactions } = useSelector((state) => state.transactionModule);
     const dispatch = useDispatch();
 
-    const onRemoveExpense = async (expenseId) => {
-        dispatch(removeExpense(expenseId));
+    const onRemoveTransaction = async (transactionId) => {
+        dispatch(removeTransaction(transactionId));
     };
 
-    if (!expenses) return <div>Loading...</div>;
+    if (!transactions) return <div>Loading...</div>;
 
     return (
-        <section className="expenses-app">
+        <section className="transactions-app">
             <header className='flex'>
                 <img src={walletImg} alt="" />
                 {/* <div className="icon-lg house">
@@ -29,10 +29,10 @@ export const ExpenseApp = (props) => {
                 </div> */}
                 <div className="prime-header">Home Wallet</div>
             </header>
-            <Link to="/expense/edit">Add Expense</Link>
-            <ExpenseList
-                expenses={expenses}
-                onRemoveExpense={onRemoveExpense}
+            <Link to="/transaction/edit">Add Transaction</Link>
+            <TransactionList
+                transactions={transactions}
+                onRemoveTransaction={onRemoveTransaction}
             />
         </section>
     );
