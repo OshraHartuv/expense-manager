@@ -47,7 +47,25 @@ const gDefaultTransactions = [
         currency: 'ILS',
         createdAt: 1654357260000,
         transactionTime: 1654354920000,
-        transactionType: 'income',
+        transactionType: 'outcome',
+    },
+    {
+        _id: 'i5',
+        title: 'FOOD',
+        amount: 160,
+        currency: 'ILS',
+        createdAt: 1658079176000,
+        transactionTime: 1658079176000,
+        transactionType: 'outcome',
+    },
+    {
+        _id: 'i6',
+        title: 'MORE FOOD',
+        amount: 160,
+        currency: 'ILS',
+        createdAt: 1652808776000,
+        transactionTime: 1652808776000,
+        transactionType: 'outcome',
     },
 ];
 
@@ -108,7 +126,8 @@ function save(transactionToSave) {
     return Promise.resolve(transactionToSave);
 }
 
-function getTransactionMapByMonths(transactions) {
+function getTransactionMapByMonths() {
+    let transactions = _loadTransactions()
     const monthNames = [
         'January',
         'February',

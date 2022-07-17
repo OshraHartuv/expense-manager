@@ -41,10 +41,9 @@ export function loadTransactionsMapByMonths(){
     // return transactionService.getTransactionMapByMonths()
     return async (dispatch, getState) =>{
         try{
-            const { transactions } = getState().transactionModule
-            const transactionsMap = transactionService.getTransactionMapByMonths(transactions)
+            // const { transactions } = getState().transactionModule
+            const transactionsMap = transactionService.getTransactionMapByMonths()
             dispatch({type : 'SET_TRANSACTIONS_MAP', transactionsMap})
-
         }catch(err){
             console.log('err in loadTransactions >>',err);
         }
