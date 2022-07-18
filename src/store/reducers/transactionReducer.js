@@ -1,3 +1,6 @@
+import { transactionService } from "../../services/transactionService"
+import { getDateStr } from "../../services/utilService"
+
 const INITIAL_STATE = {
     transactions: [],
     filterBy: null
@@ -25,9 +28,11 @@ export function transactionReducer(state = INITIAL_STATE, action) {
             }
 
         case 'REMOVE_TRANSACTION':
+          
             return {
                 ...state,
-                transactions: state.transactions.filter(transaction => transaction._id !== action.transactionId)
+                transactions: state.transactions.filter(transaction => transaction._id !== action.transactionId),
+                // transactionsMap: 
             }
 
         case 'UPDATE_TRANSACTION':

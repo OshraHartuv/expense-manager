@@ -1,5 +1,5 @@
 import { storageService } from './storageService.js';
-import { makeId } from './utilService.js';
+import { getDateStr, makeId } from './utilService.js';
 
 export const transactionService = {
     query,
@@ -19,8 +19,8 @@ const gDefaultTransactions = [
         amount: 150,
         currency: 'ILS',
         createdAt: 1654759120000,
-        transactionTime: 1654759120000,
-        transactionType: 'outcome',
+        time: 1654759120000,
+        type: 'outcome',
     },
     {
         _id: 'i2',
@@ -28,8 +28,8 @@ const gDefaultTransactions = [
         amount: 320,
         currency: 'ILS',
         createdAt: 1654671760000,
-        transactionTime: 1654671760000,
-        transactionType: 'income',
+        time: 1654671760000,
+        type: 'income',
     },
     {
         _id: 'i3',
@@ -37,8 +37,8 @@ const gDefaultTransactions = [
         amount: 80,
         currency: 'ILS',
         createdAt: 1654462720000,
-        transactionTime: 1654462720000,
-        transactionType: 'outcome',
+        time: 1654462720000,
+        type: 'outcome',
     },
     {
         _id: 'i4',
@@ -46,8 +46,8 @@ const gDefaultTransactions = [
         amount: 109,
         currency: 'ILS',
         createdAt: 1654357260000,
-        transactionTime: 1654354920000,
-        transactionType: 'outcome',
+        time: 1654354920000,
+        type: 'outcome',
     },
     {
         _id: 'i5',
@@ -55,8 +55,8 @@ const gDefaultTransactions = [
         amount: 160,
         currency: 'ILS',
         createdAt: 1658079176000,
-        transactionTime: 1658079176000,
-        transactionType: 'outcome',
+        time: 1658079176000,
+        type: 'outcome',
     },
     {
         _id: 'i6',
@@ -64,8 +64,8 @@ const gDefaultTransactions = [
         amount: 160,
         currency: 'ILS',
         createdAt: 1652808776000,
-        transactionTime: 1652808776000,
-        transactionType: 'outcome',
+        time: 1652808776000,
+        type: 'outcome',
     },
 ];
 
@@ -99,7 +99,7 @@ function getEmptyTransaction() {
         title: '',
         amount: 0,
         currency: 'ILS',
-        transactionTime: Date.now(),
+        time: Date.now(),
     };
 }
 
@@ -111,7 +111,7 @@ function getById(id) {
 }
 
 function save(transactionToSave) {
-    transactionToSave.transactionTime = +transactionToSave.transactionTime
+    transactionToSave.time = +transactionToSave.time
     if (transactionToSave._id) {
         const idx = gTransactions.findIndex(
             (transaction) => transaction._id === transactionToSave._id
@@ -128,29 +128,11 @@ function save(transactionToSave) {
 
 function getTransactionMapByMonths() {
     let transactions = _loadTransactions()
-    const monthNames = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-    ];
     var transactionsMapByMonth = {};
     transactions.forEach((transaction) => {
-        const date = new Date(transaction.transactionTime)
-        const month=  monthNames[date.getMonth()];
-        const year = date.getFullYear()
-        console.log('`${month} ${year}` ',`${month} ${year}`);
-        transactionsMapByMonth[`${month} ${year}`] ? transactionsMapByMonth[`${month} ${year}`].push(transaction) : transactionsMapByMonth[`${month} ${year}`] = [transaction]
+        const date = getDateStr(transaction.time)
+        transactionsMapByMonth[date] ? transactionsMapByMonth[date].push(transaction) : transactionsMapByMonth[date] = [transaction]
     });
-    console.log('transactionsMapByMonth ',transactionsMapByMonth);
     return transactionsMapByMonth
 }
 

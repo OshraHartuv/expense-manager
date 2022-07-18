@@ -7,3 +7,24 @@ export function makeId(length = 5) {
     }
     return text;
 }
+
+export function getDateStr(ts){
+    const monthNames = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+    ]
+    const date = new Date(ts)
+    const month=  monthNames[date.getMonth()];
+    const year = date.getFullYear()
+    return `${month} ${year}`
+}

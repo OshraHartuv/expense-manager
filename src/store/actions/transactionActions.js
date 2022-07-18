@@ -38,6 +38,7 @@ export function saveTransaction(transactionToSave){
 }
 
 export function loadTransactionsMapByMonths(){
+  
     // return transactionService.getTransactionMapByMonths()
     return async (dispatch, getState) =>{
         try{

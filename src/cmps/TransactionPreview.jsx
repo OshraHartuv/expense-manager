@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom"
 
-export function TransactionPreview({ transaction , onRemoveTransaction}) {
+export function TransactionPreview({ transaction , onRemoveTransaction,history}) {
     return (
-        <section className="transaction-preview flex">
+        <section onClick={()=>window.location.href=`/transaction/edit/${transaction._id}`} className="transaction-preview flex">
             <header className="header flex">
                 <div>{transaction.title}</div> 
-                <div>{transaction.amount}</div>
+                <div>
+                    { (transaction.type === 'outcome') && <span>- </span> }
+                    {transaction.amount}
+                </div>
             </header>
-            <div>{transaction.transactionTime}</div>
-            <button onClick={()=>onRemoveTransaction(transaction._id)}>Delete</button>
-            <Link to={`/transaction/edit/${transaction._id}`}>Edit Transaction</Link>
+            <button onClick={(e)=>{
+                e.stopPropagation()
+                onRemoveTransaction(transaction._id)
+                }}>Delete</button>
+            {/* <Link to={`/transaction/edit/${transaction._id}`}>Edit Transaction</Link> */}
         </section>
     );
 }

@@ -1,15 +1,16 @@
-.transaction-preview{
-    background-color: $clr2;
+.transaction-preview {
+    background-color: $clr5;
     align-items: center;
     flex-direction: column;
-    padding: 5px;
+    padding: 5px 15px;
     border-radius: 3px;
- 
-    .header{
+    margin-bottom: 10px;
+    box-shadow: rgba(71, 71, 71, 0.1) 0px 4px 6px -1px, rgba(71, 71, 71, 0.06) 0px 2px 4px -1px;
+    color: $clr4;
+    .header {
         width: 100%;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 10px;
-     
     }
 }
