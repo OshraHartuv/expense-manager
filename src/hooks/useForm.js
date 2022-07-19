@@ -10,8 +10,11 @@ export const useForm = (initialState, cb = () => {}) => {
 
     const handleChange = ({ target }) => {
         const field = target.name;
-        const value =
-            target.type === 'number' ? +target.value || '' : target.value;
+        let value;
+        if (target.type === 'number')  value = +target.value
+        else if (target.type === 'date') value = +new Date(target.value)
+        else value = target.value
+        console.log('val',value);
         setFields((prevFields) => ({ ...prevFields, [field]: value }));
     };
 

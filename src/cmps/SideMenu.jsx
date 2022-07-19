@@ -6,7 +6,7 @@ export function SideMenu() {
                 <div className="side-section">
                     <header className="flex">
                         <div className="prime-header">Wallets</div>
-                        <button className="add-btn">+</button>
+                        <button className="add-btn fa fa-plus"></button>
                     </header>
                     <main>
                         <div className="list-item flex">
@@ -35,7 +35,7 @@ export function SideMenu() {
                 <div className="side-section">
                     <header className="flex">
                         <div className="prime-header">Categories</div>
-                        <button className="add-btn">+</button>
+                        <button className="add-btn  fa fa-plus"></button>
                     </header>
                     <main>
                         <div>Bills</div>

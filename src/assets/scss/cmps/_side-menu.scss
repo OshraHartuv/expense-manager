@@ -23,10 +23,12 @@
                 line-height: 1;
 
                 .add-btn {
-                    border-radius: 3px;
+                    @include btn(regular,  $clr5,$clr3, em(7.5px) em(10.5px));
+                    // border-radius: 3px;
+                    font-size: rem(10px);
                     border: 1px dashed $clr3;
-                    color: $clr3;
-                    background-color: $clr5;
+                    // color: $clr3;
+                    // background-color: $clr5;
                 }
             }
 

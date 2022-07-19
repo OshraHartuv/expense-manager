@@ -62,11 +62,11 @@ export const TransactionEdit = (props) => {
                 <label htmlFor="date">Date</label>
                 <input
                     onChange={handleChange}
-                    value={new Date(transaction.transactionTime)
+                    value={new Date(transaction.time)
                         .toISOString()
                         .slice(0, 10)}
                     type="date"
-                    name="date"
+                    name="time"
                     id="date"
                 />
                 <button>Save</button>
