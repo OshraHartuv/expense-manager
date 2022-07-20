@@ -11,16 +11,20 @@ export function TransactionList({
         <section className="transaction-list flex">
             {Object.keys(transactionsMap).map((month) => (
                 <div key={month} className="monthly-list">
-                    <h1>{month}</h1>
-                    {transactionsMap[month].map(
-                        (transaction) => (
-                                <TransactionPreview
-                                    transaction={transaction}
-                                    onRemoveTransaction={onRemoveTransaction}
-                                    key={transaction._id}
-                                />
-                        )
-                    )}
+                    <h1>
+                        <div className='month'>{month}</div>
+                        <div className='num-of-trans'>
+                            Number of transactions:{' '}
+                            {transactionsMap[month].length}
+                        </div>
+                    </h1>
+                    {transactionsMap[month].map((transaction) => (
+                        <TransactionPreview
+                            transaction={transaction}
+                            onRemoveTransaction={onRemoveTransaction}
+                            key={transaction._id}
+                        />
+                    ))}
                 </div>
             ))}
 

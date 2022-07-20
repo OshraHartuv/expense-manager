@@ -10,19 +10,19 @@ import {
 import walletImg from '../assets/imgs/wallet.png';
 import { transactionService } from '../services/transactionService';
 import { useEffectUpdate } from '../hooks/useEffectUpdate';
+import { CreateTransaction } from '../cmps/CreateTransaction';
 // import { loadRobots, removeRobot, setFilterBy } from '../store/actions/robotActions'
 
 export const TransactionApp = (props) => {
     useEffect(() => {
         dispatch(loadTransactions());
-        dispatch(loadTransactionsMapByMonths());
     }, []);
 
     const { transactions } = useSelector((state) => state.transactionModule);
 
     const { transactionsMap } = useSelector((state) => state.transactionModule);
 
-    useEffectUpdate(() => {
+    useEffect(() => {
         dispatch(loadTransactionsMapByMonths());
     }, [transactions]);
 
@@ -44,7 +44,7 @@ export const TransactionApp = (props) => {
                 </div> */}
                 <div className="prime-header">Home Wallet</div>
             </header>
-            <Link to="/transaction/edit">Add Transaction</Link>
+            <CreateTransaction />
             <TransactionList
                 transactionsMap={transactionsMap}
                 transactions={transactions}

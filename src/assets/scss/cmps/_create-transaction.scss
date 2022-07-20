@@ -1,0 +1,15 @@
+.create-transaction {
+    @include btn(regular, $clr2, $clr1, em(10px) em(10px));
+    max-width: fit-content;
+    font-size: em(25px);
+    border-radius: 50%;
+    letter-spacing: em(0.6px);
+    box-shadow: 2px 2px 3px #999;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    .icon {
+        display: flex;
+        align-items: center;
+    }
+}

@@ -12,7 +12,7 @@ export function TransactionPreview({
             }
             className="transaction-preview flex"
         >
-            <header className="header flex">
+            <div className="header flex">
                 <div className="title-date">
                     <div className="title bold">{transaction.title}</div>
                     <div className="date">
@@ -21,8 +21,8 @@ export function TransactionPreview({
                 </div>
                 <div className="price-actions">
                     <div className="price bold">
-                        {transaction.type === 'outcome' && <span>- </span>}
-                        {transaction.amount}
+                        {transaction.type === 'outcome' && <span>-</span>}
+                        {new Intl.NumberFormat(undefined,{ style: 'currency', currency: transaction.currency }).format(transaction.amount)}
                     </div>
                     <div className="actions">
                         <button
@@ -36,7 +36,7 @@ export function TransactionPreview({
                         </button>
                     </div>
                 </div>
-            </header>
+            </div>
             {/* <Link to={`/transaction/edit/${transaction._id}`}>Edit Transaction</Link> */}
         </section>
     );
