@@ -127,7 +127,7 @@ function save(transactionToSave) {
 }
 
 function getTransactionMapByMonths() {
-    let transactions = _loadTransactions()
+    let transactions = _loadTransactions().sort((a,b)=> b.time - a.time)
     var transactionsMapByMonth = {};
     transactions.forEach((transaction) => {
         const date = getDateStr(transaction.time)

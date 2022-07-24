@@ -39,17 +39,14 @@ export const TransactionApp = (props) => {
         <section className="transactions-app">
             <header className="flex">
                 <img src={walletImg} alt="" />
-                {/* <div className="icon-lg house">
-                    <i className="fa fa-solid fa-house"></i>
-                </div> */}
                 <div className="prime-header">Home Wallet</div>
             </header>
-            <CreateTransaction />
             <TransactionList
                 transactionsMap={transactionsMap}
                 transactions={transactions}
                 onRemoveTransaction={onRemoveTransaction}
             />
+            <CreateTransaction />
         </section>
     );
 };

@@ -8,8 +8,8 @@ export function CreateTransaction() {
                 className="create-transaction"
                 onClick={() => (window.location.href = '/transaction/edit')}
             >
-                <div>
-                    <AiOutlinePlus className="icon" />
+                <div  className="icon">
+                    <AiOutlinePlus />
                     {/* <span className='fa fa-plus'></span> */}
                     {/* <span className='create-txt'>Create</span> */}
                 </div>
