@@ -1,0 +1,19 @@
+.search-transaction {
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 5px;
+    border-radius: 7px;
+    .search-icon {
+        color: $clr3;
+    }
+    input {
+        color: $clr3;
+        border: none;
+        &:focus{
+            outline: none;
+
+        }
+    }
+}

@@ -1,13 +1,17 @@
-export function AppHeader(){
+import { SearchTransaction } from "./SearchTransaction";
+
+export function AppHeader() {
     return (
-        <header className="app-header">
-            <section className="container flex">
-            <div>Logo</div>
-            <div className="links flex">
-            <a>Overview</a>
-            <a>Finance</a>
+        <header className="app-header flex">
+            <div className="home">
+                <div className="logo"></div>
+                <div className="name bold">Budget</div>
             </div>
-            </section>
+            <SearchTransaction/>
+            <div className="links flex">
+                <a>Overview</a>
+                <a>Finance</a>
+            </div>
         </header>
-    )
+    );
 }

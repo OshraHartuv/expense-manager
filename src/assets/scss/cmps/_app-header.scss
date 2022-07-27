@@ -1,14 +1,27 @@
-.app-header{
+.app-header {
     margin-bottom: 15px;
     padding: 10px 0;
     background-color: $clr1;
     color: $clr3;
-    .container{
-        justify-content: space-between;
-        
-        .links{
-            justify-content: space-between;
+    // display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // .container{
+    //     min-width: 100%;
+    .home {
+        display: flex;
+        align-items: center;
+        .logo {
+            background-color: #fff;
             gap: 15px;
         }
+        .name{
+            color: $clr4;
+        }
     }
+    .links {
+        justify-content: space-between;
+        gap: 15px;
+    }
+    // }
 }
