@@ -36,19 +36,19 @@ export function saveTransaction(transactionToSave){
     }
 }
 
-export function loadTransactionsMapByMonths(){
+// export function loadTransactionsMapByMonths(){
   
-    // return transactionService.getTransactionMapByMonths()
-    return async (dispatch, getState) =>{
-        try{
-            // const { transactions } = getState().transactionModule
-            const transactionsMap = transactionService.getTransactionMapByMonths()
-            dispatch({type : 'SET_TRANSACTIONS_MAP', transactionsMap})
-        }catch(err){
-            console.log('err in loadTransactions >>',err);
-        }
-    }
-}
+//     // return transactionService.getTransactionMapByMonths()
+//     return async (dispatch, getState) =>{
+//         try{
+//             // const { transactions } = getState().transactionModule
+//             const transactionsMap = transactionService.getTransactionMapByMonths()
+//             dispatch({type : 'SET_TRANSACTIONS_MAP', transactionsMap})
+//         }catch(err){
+//             console.log('err in loadTransactions >>',err);
+//         }
+//     }
+// }
 
 export function setFilterBy(filterBy) {
     return async (dispatch) => {

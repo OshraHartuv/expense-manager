@@ -27,9 +27,9 @@ export const TransactionApp = (props) => {
 
     // const { transactionsMap } = useSelector((state) => state.transactionModule);
 
-    useEffect(() => {
-        dispatch(loadTransactionsMapByMonths());
-    }, [transactions]);
+    // useEffect(() => {
+    //     dispatch(loadTransactionsMapByMonths());
+    // }, [transactions]);
 
     const dispatch = useDispatch();
 
@@ -42,10 +42,10 @@ export const TransactionApp = (props) => {
         // setState({ filterBy }, loadRobots)
         dispatch(setFilterBy(filterBy));
         dispatch(loadTransactions());
-        dispatch(loadTransactionsMapByMonths());
+        // dispatch(loadTransactionsMapByMonths());
     }, []);
 
-    if (!transactions || !transactionsMap) return <div>Loading...</div>;
+    if (!transactions ) return <div>Loading...</div>;
 
     return (
         <section className="transactions-app">
@@ -57,7 +57,7 @@ export const TransactionApp = (props) => {
                 <SearchTransaction onChangeFilter={onChangeFilter} />
             </header>
             <TransactionList
-                transactionsMap={transactionsMap}
+                // transactionsMap={transactionsMap}
                 transactions={transactions}
                 onRemoveTransaction={onRemoveTransaction}
             />

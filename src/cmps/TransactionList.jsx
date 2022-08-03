@@ -1,11 +1,13 @@
+import { getTransactionMapByMonths } from '../services/utilService';
 import { TransactionPreview } from './TransactionPreview';
 
 export function TransactionList({
     transactions,
     onRemoveTransaction,
-    transactionsMap,
+    // transactionsMap,
 }) {
-    // console.log('transactionsMap', transactionsMap);
+
+    const transactionsMap = getTransactionMapByMonths(transactions)
     if (!transactionsMap) return <div>Loading...</div>;
     return (
         <section className="transaction-list flex">

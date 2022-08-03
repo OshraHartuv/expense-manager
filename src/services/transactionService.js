@@ -7,7 +7,7 @@ export const transactionService = {
     getEmptyTransaction,
     getById,
     save,
-    getTransactionMapByMonths
+    // getTransactionMapByMonths
 };
 
 const STORAGE_KEY = 'transactions';
@@ -128,20 +128,21 @@ function save(transactionToSave) {
     return Promise.resolve(transactionToSave);
 }
 
-function getTransactionMapByMonths() {
-    let transactions = _loadTransactions().sort((a,b)=> b.time - a.time)
-    var transactionsMapByMonth = {};
-    transactions.forEach((transaction) => {
-        const date = getDateStr(transaction.time)
-        transactionsMapByMonth[date] ? transactionsMapByMonth[date].push(transaction) : transactionsMapByMonth[date] = [transaction]
-    });
-    return transactionsMapByMonth
-}
 
 function _loadTransactions() {
     let Transactions = storageService.load(STORAGE_KEY);
     if (!Transactions || !Transactions.length)
-        Transactions = gDefaultTransactions;
+    Transactions = gDefaultTransactions;
     storageService.store(STORAGE_KEY, Transactions);
     return Transactions;
 }
+
+// function getTransactionMapByMonths() {
+//     let transactions = _loadTransactions().sort((a,b)=> b.time - a.time)
+//     var transactionsMapByMonth = {};
+//     transactions.forEach((transaction) => {
+//         const date = getDateStr(transaction.time)
+//         transactionsMapByMonth[date] ? transactionsMapByMonth[date].push(transaction) : transactionsMapByMonth[date] = [transaction]
+//     });
+//     return transactionsMapByMonth
+// }
