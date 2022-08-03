@@ -4,7 +4,6 @@ import { TransactionPreview } from './TransactionPreview';
 export function TransactionList({
     transactions,
     onRemoveTransaction,
-    // transactionsMap,
 }) {
 
     const transactionsMap = getTransactionMapByMonths(transactions)
@@ -29,10 +28,6 @@ export function TransactionList({
                     ))}
                 </div>
             ))}
-
-            {/* {transactions.map((transaction) => (
-                <TransactionPreview transaction={transaction} onRemoveTransaction={onRemoveTransaction} key={transaction._id}/>
-            ))} */}
         </section>
     );
 }

@@ -7,7 +7,6 @@ export const transactionService = {
     getEmptyTransaction,
     getById,
     save,
-    // getTransactionMapByMonths
 };
 
 const STORAGE_KEY = 'transactions';
@@ -136,13 +135,3 @@ function _loadTransactions() {
     storageService.store(STORAGE_KEY, Transactions);
     return Transactions;
 }
-
-// function getTransactionMapByMonths() {
-//     let transactions = _loadTransactions().sort((a,b)=> b.time - a.time)
-//     var transactionsMapByMonth = {};
-//     transactions.forEach((transaction) => {
-//         const date = getDateStr(transaction.time)
-//         transactionsMapByMonth[date] ? transactionsMapByMonth[date].push(transaction) : transactionsMapByMonth[date] = [transaction]
-//     });
-//     return transactionsMapByMonth
-// }

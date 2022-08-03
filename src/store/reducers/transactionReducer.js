@@ -15,12 +15,6 @@ export function transactionReducer(state = INITIAL_STATE, action) {
                 transactions: action.transactions
             }
 
-        // case 'SET_TRANSACTIONS_MAP':
-        //     return {
-        //         ...state,
-        //         transactionsMap: action.transactionsMap
-        //     }
-
         case 'ADD_TRANSACTION':
             return {
                 ...state,
@@ -32,7 +26,6 @@ export function transactionReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 transactions: state.transactions.filter(transaction => transaction._id !== action.transactionId),
-                // transactionsMap: 
             }
 
         case 'UPDATE_TRANSACTION':
