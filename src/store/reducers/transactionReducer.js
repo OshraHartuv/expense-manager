@@ -41,11 +41,11 @@ export function transactionReducer(state = INITIAL_STATE, action) {
                 transactions: state.transactions.map(transaction => transaction._id === action.transaction._id ? action.transaction : transaction)
             }
             
-        // case 'SET_FILTER_BY':
-        //     return {
-        //         ...state,
-        //         filterBy: {...action.filterBy}
-        //     }
+        case 'SET_FILTER_BY':
+            return {
+                ...state,
+                filterBy: {...action.filterBy}
+            }
 
         default:
             return state;

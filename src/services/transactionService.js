@@ -73,14 +73,16 @@ var gTransactions = _loadTransactions();
 
 function query(filterBy) {
     let transactionsToReturn = gTransactions;
-    // if (filterBy) {
-    //     var { type, maxBatteryStatus, minBatteryStatus, model } = filterBy
-    //     maxBatteryStatus = maxBatteryStatus || Infinity
-    //     minBatteryStatus = minBatteryStatus || 0
-    //     transactionsToReturn = gTransactions.filter(robot => robot.type.toLowerCase().includes(type.toLowerCase()) && robot.model.toLowerCase().includes(model.toLowerCase())
-    //         && (robot.batteryStatus < maxBatteryStatus)
-    //         && robot.batteryStatus > minBatteryStatus)
-    // }
+    if (filterBy) {
+        var { text } = filterBy
+        const regex = new RegExp(text, 'i')
+        // maxBatteryStatus = maxBatteryStatus || Infinity
+        // minBatteryStatus = minBatteryStatus || 0
+        transactionsToReturn = gTransactions.filter((transaction) => regex.test(transaction.title))
+    }
+
+    // let bugs = gBugs.filter((bug) => regex.test(bug.title))
+    console.log('transactionsToReturn ',transactionsToReturn);
     return Promise.resolve([...transactionsToReturn]);
 }
 

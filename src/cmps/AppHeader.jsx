@@ -7,11 +7,11 @@ export function AppHeader() {
                 <div className="logo"></div>
                 <div className="name bold">Budget</div>
             </div>
-            <SearchTransaction/>
-            <div className="links flex">
+            {/* <SearchTransaction/> */}
+            {/* <div className="links flex">
                 <a>Overview</a>
                 <a>Finance</a>
-            </div>
+            </div> */}
         </header>
     );
 }

@@ -5,7 +5,7 @@ export function TransactionList({
     onRemoveTransaction,
     transactionsMap,
 }) {
-    console.log('transactionsMap', transactionsMap);
+    // console.log('transactionsMap', transactionsMap);
     if (!transactionsMap) return <div>Loading...</div>;
     return (
         <section className="transaction-list flex">

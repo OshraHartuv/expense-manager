@@ -6,7 +6,6 @@ export function loadTransactions(){
             const { filterBy } = getState().transactionModule
             const transactions = await transactionService.query(filterBy)
             dispatch({type : 'SET_TRANSACTIONS', transactions})
-
         }catch(err){
             console.log('err in loadTransactions >>',err);
         }
@@ -48,5 +47,11 @@ export function loadTransactionsMapByMonths(){
         }catch(err){
             console.log('err in loadTransactions >>',err);
         }
+    }
+}
+
+export function setFilterBy(filterBy) {
+    return async (dispatch) => {
+        dispatch({ type: 'SET_FILTER_BY', filterBy })
     }
 }

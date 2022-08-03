@@ -1,16 +1,19 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
+import { SearchTransaction } from '../cmps/SearchTransaction';
 import { useDispatch, useSelector } from 'react-redux';
 import { TransactionList } from '../cmps/TransactionList';
-import { Link } from 'react-router-dom';
 import {
     loadTransactions,
     removeTransaction,
     loadTransactionsMapByMonths,
+    setFilterBy,
 } from '../store/actions/transactionActions';
 import walletImg from '../assets/imgs/wallet.png';
-import { transactionService } from '../services/transactionService';
-import { useEffectUpdate } from '../hooks/useEffectUpdate';
 import { CreateTransaction } from '../cmps/CreateTransaction';
+
+// import { transactionService } from '../services/transactionService';
+// import { Link } from 'react-router-dom';
+// import { useEffectUpdate } from '../hooks/useEffectUpdate';
 // import { loadRobots, removeRobot, setFilterBy } from '../store/actions/robotActions'
 
 export const TransactionApp = (props) => {
@@ -18,9 +21,11 @@ export const TransactionApp = (props) => {
         dispatch(loadTransactions());
     }, []);
 
-    const { transactions } = useSelector((state) => state.transactionModule);
+    const { transactions, transactionsMap } = useSelector(
+        (state) => state.transactionModule
+    );
 
-    const { transactionsMap } = useSelector((state) => state.transactionModule);
+    // const { transactionsMap } = useSelector((state) => state.transactionModule);
 
     useEffect(() => {
         dispatch(loadTransactionsMapByMonths());
@@ -33,13 +38,23 @@ export const TransactionApp = (props) => {
         console.log('trans deleted', transactionId);
     };
 
+    const onChangeFilter = useCallback(async (filterBy) => {
+        // setState({ filterBy }, loadRobots)
+        dispatch(setFilterBy(filterBy));
+        dispatch(loadTransactions());
+        dispatch(loadTransactionsMapByMonths());
+    }, []);
+
     if (!transactions || !transactionsMap) return <div>Loading...</div>;
 
     return (
         <section className="transactions-app">
             <header className="flex">
-                <img src={walletImg} alt="" />
-                <div className="prime-header">Home Wallet</div>
+                <div className="flex">
+                    <img src={walletImg} alt="" />
+                    <div className="prime-header">Home Wallet</div>
+                </div>
+                <SearchTransaction onChangeFilter={onChangeFilter} />
             </header>
             <TransactionList
                 transactionsMap={transactionsMap}
