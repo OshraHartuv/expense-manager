@@ -13,7 +13,7 @@ export const TransactionEdit = (props) => {
     useEffect(() => {
         console.log('editor opened');
         loadTransaction();
-    }, []);
+    }, [id]);
 
     const dispatch = useDispatch();
 
