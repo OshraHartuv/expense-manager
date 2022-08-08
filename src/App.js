@@ -11,22 +11,23 @@ function App() {
         <Router>
             <div className="app ">
                 <main className="main-layout main">
-                <AppHeader />
+                    <AppHeader />
                     <Routes>
-                        <Route path="/">
-                            <Route
-                                path="transaction/edit/:id"
-                                element={<TransactionEdit />}
-                            />
+                        <Route path="/" element={<TransactionApp />}>
                             <Route
                                 path="transaction/edit"
                                 element={<TransactionEdit />}
-                            />
-                            <Route index element={<TransactionApp />} />
+                                />
+                            <Route
+                                path="transaction/edit/:id"
+                                element={<TransactionEdit />}
+                                />
                         </Route>
                     </Routes>
+                                {/* <Route index element={<TransactionApp />} > */}
+                            {/* </Route> */}
                 </main>
-                    <SideMenu/>
+                <SideMenu />
             </div>
         </Router>
     );

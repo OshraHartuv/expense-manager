@@ -9,6 +9,7 @@ import {
 } from '../store/actions/transactionActions';
 import walletImg from '../assets/imgs/wallet.png';
 import { CreateTransaction } from '../cmps/CreateTransaction';
+import { Outlet } from 'react-router-dom';
 
 
 export const TransactionApp = (props) => {
@@ -48,6 +49,7 @@ export const TransactionApp = (props) => {
                 onRemoveTransaction={onRemoveTransaction}
             />
             <CreateTransaction />
+            <Outlet/>
         </section>
     );
 };

@@ -1,19 +1,17 @@
 import { AiOutlinePlus } from 'react-icons/ai';
 import { BsPlus } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 export function CreateTransaction() {
+    const navigate = useNavigate();
     return (
-        // <section className="create-transaction">
-            <button
-                className="create-transaction"
-                onClick={() => (window.location.href = '/transaction/edit')}
-            >
-                <div  className="icon">
-                    <AiOutlinePlus />
-                    {/* <span className='fa fa-plus'></span> */}
-                    {/* <span className='create-txt'>Create</span> */}
-                </div>
-            </button>
-        // </section>
+        <button
+            className="create-transaction"
+            onClick={() => navigate('/transaction/edit')}
+        >
+            <div className="icon">
+                <AiOutlinePlus />
+            </div>
+        </button>
     );
 }

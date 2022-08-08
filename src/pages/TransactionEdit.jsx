@@ -11,6 +11,7 @@ export const TransactionEdit = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log('editor opened');
         loadTransaction();
     }, []);
 

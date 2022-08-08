@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export function TransactionPreview({
     transaction,
     onRemoveTransaction,
     history,
 }) {
+    const navigate = useNavigate();
     return (
         <section
-            onClick={() =>
-                (window.location.href = `/transaction/edit/${transaction._id}`)
-            }
+            onClick={() => navigate(`/transaction/edit/${transaction._id}`)}
             className="transaction-preview flex"
         >
             <div className="header flex">
@@ -22,7 +22,10 @@ export function TransactionPreview({
                 <div className="price-actions">
                     <div className="price bold">
                         {transaction.type === 'outcome' && <span>-</span>}
-                        {new Intl.NumberFormat(undefined,{ style: 'currency', currency: transaction.currency }).format(transaction.amount)}
+                        {new Intl.NumberFormat(undefined, {
+                            style: 'currency',
+                            currency: transaction.currency,
+                        }).format(transaction.amount)}
                     </div>
                     <div className="actions">
                         <button
@@ -31,9 +34,7 @@ export function TransactionPreview({
                                 e.stopPropagation();
                                 onRemoveTransaction(transaction._id);
                             }}
-                        >
-                           
-                        </button>
+                        ></button>
                     </div>
                 </div>
             </div>
