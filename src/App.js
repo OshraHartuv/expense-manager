@@ -15,11 +15,11 @@ function App() {
                     <Routes>
                         <Route path="/" element={<TransactionApp />}>
                             <Route
-                                path="transaction/edit"
+                                path="transaction/edit/:id"
                                 element={<TransactionEdit />}
                                 />
                             <Route
-                                path="transaction/edit/:id"
+                                path="transaction/edit"
                                 element={<TransactionEdit />}
                                 />
                         </Route>

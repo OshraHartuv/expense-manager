@@ -8,23 +8,24 @@ import { useClickOutside } from '../hooks/useClickOutside';
 
 export const TransactionEdit = () => {
     const [transaction, handleChange, setTransaction] = useForm(null);
-    const { id } = useParams();
+    const params = useParams();
+    const { id } = params;
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log('editor opened');
         loadTransaction();
-    }, [id]);
+    }, [params.id]);
 
     const dispatch = useDispatch();
 
     const modalRef = useRef();
-    useClickOutside(modalRef, ()=>{navigate('/')})
-
+    useClickOutside(modalRef, () => {
+        navigate('/');
+    });
 
     const loadTransaction = async () => {
-        const transaction = id
-            ? await transactionService.getById(id)
+        const transaction = params.id
+            ? await transactionService.getById(params.id)
             : transactionService.getEmptyTransaction();
         console.log('transaction', transaction);
         setTransaction(transaction);
@@ -47,36 +48,78 @@ export const TransactionEdit = () => {
     if (!transaction) return <div>Loading...</div>;
     return (
         <div className="modal-wrapper">
-            <section className="transaction-edit wrapped-modal" ref={modalRef} >
+            <section className="transaction-edit wrapped-modal" ref={modalRef}>
                 <h1>{transaction._id ? 'Edit' : 'Add'} Transaction</h1>
                 <form onSubmit={onSaveTransaction}>
-                    <label htmlFor="title">Title</label>
-                    <input
-                        onChange={handleChange}
-                        value={transaction.title}
-                        type="text"
-                        name="title"
-                        id="title"
-                    />
-                    <label htmlFor="amount">Amount</label>
-                    <input
-                        onChange={handleChange}
-                        value={transaction.amount}
-                        type="number"
-                        name="amount"
-                        id="amount"
-                    />
-                    <label htmlFor="date">Date</label>
-                    <input
-                        onChange={handleChange}
-                        value={new Date(transaction.time)
-                            .toISOString()
-                            .slice(0, 10)}
-                        type="date"
-                        name="time"
-                        id="date"
-                    />
-                    <button>Save</button>
+                    <table>
+                        <tr>
+                            <td>
+                                <label htmlFor="title"> Title </label>
+                            </td>
+                            <td>
+                                <input
+                                    onChange={handleChange}
+                                    value={transaction.title}
+                                    type="text"
+                                    name="title"
+                                    id="title"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label htmlFor="amount"> Amount </label>
+                            </td>
+                            <td>
+                                <input
+                                    onChange={handleChange}
+                                    value={transaction.amount}
+                                    type="number"
+                                    name="amount"
+                                    id="amount"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label htmlFor="type"> Type </label>
+                            </td>
+                            <td>
+                                <select
+                                    onChange={handleChange}
+                                    value={(transaction.type)}
+                                    // type=""
+                                    name="type"
+                                    id="type"
+                                >
+                                    <option value="income">Income</option>
+                                    <option value="outcome">Outcome</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label htmlFor="date"> Date </label>
+                            </td>
+                            <td>
+                                <input
+                                    onChange={handleChange}
+                                    value={new Date(transaction.time)
+                                        .toISOString()
+                                        .slice(0, 10)}
+                                    type="date"
+                                    name="time"
+                                    id="date"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            {/* <td colSpan={2}> */}
+
+                            <button>Save</button>
+                            {/* </td> */}
+                        </tr>
+                    </table>
                 </form>
             </section>
         </div>
