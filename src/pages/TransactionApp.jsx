@@ -10,6 +10,7 @@ import {
 import walletImg from '../assets/imgs/wallet.png';
 import { CreateTransaction } from '../cmps/CreateTransaction';
 import { Outlet } from 'react-router-dom';
+// import {getTransactionMapByMonths} from '../services/utilService'
 
 
 export const TransactionApp = (props) => {
@@ -17,15 +18,19 @@ export const TransactionApp = (props) => {
         dispatch(loadTransactions());
     }, []);
 
-    const { transactions, transactionsMap } = useSelector(
+    const { transactions } = useSelector(
         (state) => state.transactionModule
     );
+    
+    // const transactionsByMonths = getTransactionMapByMonths(transactions)
+    // useEffect(() => {
+    //     console.log('transactionsByMonths' ,transactionsByMonths);
+    // }, [transactions])
 
     const dispatch = useDispatch();
 
     const onRemoveTransaction = async (transactionId) => {
         dispatch(removeTransaction(transactionId));
-        console.log('trans deleted', transactionId);
     };
 
     const onChangeFilter = useCallback(async (filterBy) => {

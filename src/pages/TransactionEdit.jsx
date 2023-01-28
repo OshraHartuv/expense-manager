@@ -52,69 +52,73 @@ export const TransactionEdit = () => {
                 <h1>{transaction._id ? 'Edit' : 'Add'} Transaction</h1>
                 <form onSubmit={onSaveTransaction}>
                     <table>
-                        <tr>
-                            <td>
-                                <label htmlFor="title"> Title </label>
-                            </td>
-                            <td>
-                                <input
-                                    onChange={handleChange}
-                                    value={transaction.title}
-                                    type="text"
-                                    name="title"
-                                    id="title"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label htmlFor="amount"> Amount </label>
-                            </td>
-                            <td>
-                                <input
-                                    onChange={handleChange}
-                                    value={transaction.amount}
-                                    type="number"
-                                    name="amount"
-                                    id="amount"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label htmlFor="type"> Type </label>
-                            </td>
-                            <td>
-                                <select
-                                    onChange={handleChange}
-                                    value={(transaction.type)}
-                                    name="type"
-                                    id="type"
-                                >
-                                    <option value="income">Income</option>
-                                    <option value="outcome">Outcome</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label htmlFor="date"> Date </label>
-                            </td>
-                            <td>
-                                <input
-                                    onChange={handleChange}
-                                    value={new Date(transaction.time)
-                                        .toISOString()
-                                        .slice(0, 10)}
-                                    type="date"
-                                    name="time"
-                                    id="date"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <button>Save</button>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label htmlFor="title"> Title </label>
+                                </td>
+                                <td>
+                                    <input
+                                        onChange={handleChange}
+                                        value={transaction.title}
+                                        type="text"
+                                        name="title"
+                                        id="title"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label htmlFor="amount"> Amount </label>
+                                </td>
+                                <td>
+                                    <input
+                                        onChange={handleChange}
+                                        value={transaction.amount}
+                                        type="number"
+                                        name="amount"
+                                        id="amount"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label htmlFor="type"> Type </label>
+                                </td>
+                                <td>
+                                    <select
+                                        onChange={handleChange}
+                                        value={transaction.type}
+                                        name="type"
+                                        id="type"
+                                    >
+                                        <option value="income">Income</option>
+                                        <option value="outcome">Outcome</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label htmlFor="date"> Date </label>
+                                </td>
+                                <td>
+                                    <input
+                                        onChange={handleChange}
+                                        value={new Date(transaction.time)
+                                            .toISOString()
+                                            .slice(0, 10)}
+                                        type="date"
+                                        name="time"
+                                        id="date"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button>Save</button>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </form>
             </section>
