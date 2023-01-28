@@ -75,13 +75,8 @@ function query(filterBy) {
     if (filterBy) {
         var { text } = filterBy
         const regex = new RegExp(text, 'i')
-        // maxBatteryStatus = maxBatteryStatus || Infinity
-        // minBatteryStatus = minBatteryStatus || 0
         transactionsToReturn = gTransactions.filter((transaction) => regex.test(transaction.title))
     }
-
-    // let bugs = gBugs.filter((bug) => regex.test(bug.title))
-    console.log('transactionsToReturn ',transactionsToReturn);
     return Promise.resolve([...transactionsToReturn]);
 }
 

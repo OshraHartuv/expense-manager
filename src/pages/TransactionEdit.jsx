@@ -88,7 +88,6 @@ export const TransactionEdit = () => {
                                 <select
                                     onChange={handleChange}
                                     value={(transaction.type)}
-                                    // type=""
                                     name="type"
                                     id="type"
                                 >
@@ -114,10 +113,7 @@ export const TransactionEdit = () => {
                             </td>
                         </tr>
                         <tr>
-                            {/* <td colSpan={2}> */}
-
                             <button>Save</button>
-                            {/* </td> */}
                         </tr>
                     </table>
                 </form>

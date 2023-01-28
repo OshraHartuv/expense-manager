@@ -9,10 +9,16 @@
            .month {
                 color: $clr4;
             }
-            .num-of-trans{
+            .month-summary{
                 font-size: 14px;
                 color: $clr3;
-                padding-right: 5px;
+                padding-inline-start: 5px;
+                display: flex;
+                gap: 5px;
+                :not(:last-child){
+                    padding-inline-end: 5px;
+                    border-inline-end: 1px $clr3 solid;
+                }
             }
         }
     }
